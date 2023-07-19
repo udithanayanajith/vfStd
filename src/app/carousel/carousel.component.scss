@@ -1,0 +1,209 @@
+html {
+  box-sizing: border-box;
+}
+
+.body {
+  background-image: url("/src/assets/images/background/home.jpg");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: Roboto, sans-serif;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 85%;
+  height: 300px;
+  margin: 50px auto;
+  background-color: #dbe2e4;
+  opacity: 90%;
+  border-radius: 15px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.slider-controls {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  width: 200px;
+  text-align: center;
+  transform: translateX(-50%);
+  z-index: 1000;
+  list-style: none;
+  text-align: center;
+}
+
+.slider input[type="radio"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-controls label {
+  display: inline-block;
+  border: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #212121;
+  transition: background-color 0.2s linear;
+}
+
+#btn-1:checked ~ .slider-controls label[for="btn-1"],
+#btn-2:checked ~ .slider-controls label[for="btn-2"],
+#btn-3:checked ~ .slider-controls label[for="btn-3"],
+#btn-4:checked ~ .slider-controls label[for="btn-4"],
+#btn-5:checked ~ .slider-controls label[for="btn-5"] {
+  background-color: #ff4081;
+}
+
+/* SLIDES */
+
+.slides {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 250ms linear;
+}
+
+.slide-content {
+  width: 900px;
+}
+
+.slide-title {
+  margin-bottom: 20px;
+  font-size: 36px;
+}
+
+.slide-text {
+  margin-bottom: 20px;
+  font-family: "Roboto";
+  font-size: large;
+  font-weight: 400;
+}
+
+.slide-link {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 3px;
+  text-decoration: none;
+  background-color: #ff4081;
+}
+
+.slide-image img {
+  margin-bottom: 5px;
+  background: #fff;
+  width: 320px;
+  height: 240px;
+}
+
+/* Slide animations */
+#btn-1:checked ~ .slides .slide:nth-child(1),
+#btn-2:checked ~ .slides .slide:nth-child(2),
+#btn-3:checked ~ .slides .slide:nth-child(3),
+#btn-4:checked ~ .slides .slide:nth-child(4),
+#btn-5:checked ~ .slides .slide:nth-child(5) {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+#btn-1:not(:checked) ~ .slides .slide:nth-child(1),
+#btn-2:not(:checked) ~ .slides .slide:nth-child(2),
+#btn-3:not(:checked) ~ .slides .slide:nth-child(3),
+#btn-4:not(:checked) ~ .slides .slide:nth-child(4),
+#btn-5:not(:checked) ~ .slides .slide:nth-child(5) {
+  animation-name: swap-out;
+  animation-duration: 300ms;
+  animation-timing-function: linear;
+}
+
+@keyframes swap-out {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .slider {
+    height: 200px;
+    margin: 30px auto;
+  }
+
+  .slider-controls {
+    bottom: 10px;
+    width: 150px;
+  }
+
+  .slide-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider {
+    height: 150px;
+    margin: 20px auto;
+  }
+
+  .slider-controls {
+    bottom: 5px;
+    width: 120px;
+  }
+
+  .slide-content {
+    width: 100%;
+  }
+
+  .slide-title {
+    font-size: 20px;
+  }
+
+  .slide-text {
+    margin-bottom: 10px;
+  }
+
+  .slide-link {
+    padding: 8px 16px;
+  }
+}

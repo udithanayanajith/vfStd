@@ -1,0 +1,177 @@
+<form class="my-form" (ngSubmit)="submitForm()">
+  <div class="form-row" (click)="back()">
+    <button style="background-color: #e3436b;">
+      If you want to Go back to selet fulid color
+    </button>
+  </div>
+  <h2>
+    We want Your simple informations Predict your Helth
+    <mat-icon class="icon-display">favorite</mat-icon>
+  </h2>
+
+  <div class="form-row">
+    <legend><span class="number">1</span> Name</legend>
+    <div class="form-group">
+      <mat-form-field class="form-input-feilds">
+        <mat-label>Your name is:</mat-label>
+        <input
+          id="nameOfUser"
+          name="nameOfUser"
+          matInput
+          placeholder="Plase Type name here"
+          [(ngModel)]="nameOfUser"
+          required
+        />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <legend><span class="number">2</span> Your Age</legend>
+    <div class="form-group">
+      <mat-form-field class="form-input-feilds">
+        <mat-label>Your age is:</mat-label>
+        <input
+          matInput
+          id="ageOfUser"
+          name="ageOfUser"
+          type="number"
+          placeholder="Plase Type age here"
+          required
+          [(ngModel)]="ageOfUser"
+          min="0"
+          max="80"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <legend><span class="number">3</span> Gender</legend>
+    <div class="form-group">
+      <label class="form-label">Choose an option:</label>
+      <div class="radio-buttons horizontal">
+        <div
+          class="radio-buttons-row"
+          *ngFor="let radio of gender; let i = index"
+        >
+          <input
+            type="radio"
+            [id]="radio.name"
+            name="genderGroup"
+            [value]="radio.value"
+            [(ngModel)]="selectedGender"
+            required
+          />
+          <label [for]="radio.name">{{ radio.name }}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <legend><span class="number">4</span> Symptoms</legend>
+    <div class="form-group">
+      <mat-form-field style="width: 70%;">
+        <mat-label>Selected Symptoms</mat-label>
+        <mat-select
+          [(ngModel)]="selectedSymptoms"
+          name="selectedSymptoms"
+          multiple
+        >
+          <mat-option *ngFor="let symptom of symptoms" [value]="symptom"
+            >{{symptom.name}}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <legend><span class="number">5</span> Duration Of Symptoms</legend>
+    <div class="form-group">
+      <div class="slider">
+        <mat-form-field>
+          <mat-label>Select range </mat-label>
+          <mat-select
+            id="selectedDurationRange"
+            name="selectedDurationRange"
+            [(ngModel)]="selectedDurationRange"
+          >
+            <mat-option *ngFor="let range of durations" [value]="range.value">
+              {{range.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <legend><span class="number">6</span> Sex Contacts</legend>
+    <div class="form-group">
+      <mat-form-field class="form-input-feilds">
+        <mat-label>Your sex contacts are:</mat-label>
+        <input
+          matInput
+          id="contactsOfUser"
+          name="contactsOfUser"
+          type="number"
+          placeholder="Plase type number of sex contacts here"
+          required
+          [(ngModel)]="contactsOfUser"
+          min="1"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <legend>
+      <span class="number">7</span> Did you use condoms at your last sex ?
+    </legend>
+    <div class="form-group">
+      <label class="form-label">Choose an option:</label>
+      <div class="radio-buttons horizontal">
+        <div
+          class="radio-buttons-row"
+          *ngFor="let radio of condoms; let i = index"
+        >
+          <input
+            type="radio"
+            [id]="radio.name"
+            name="condomGroup"
+            [value]="radio.value"
+            [(ngModel)]="selectedCondom"
+            required
+          />
+          <label [for]="radio.name">{{ radio.name }}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <legend><span class="number">8</span> Did you test HIV ?</legend>
+    <div class="form-group">
+      <label class="form-label">Choose an option:</label>
+      <div class="radio-buttons horizontal">
+        <div class="radio-buttons-row" *ngFor="let radio of HIV; let i = index">
+          <input
+            type="radio"
+            [id]="radio.name"
+            name="hivGroup"
+            [value]="radio.value"
+            [(ngModel)]="selectedHIV"
+            required
+          />
+          <label [for]="radio.name">{{ radio.name }}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <button type="submit" class="submit-button">Submit</button>
+  </div>
+</form>

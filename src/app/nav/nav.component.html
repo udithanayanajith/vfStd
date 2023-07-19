@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <span>
+    <mat-icon>eco</mat-icon>
+    Let's Live</span
+  >
+  <span class="example-spacer"></span>
+
+  <mat-divider></mat-divider>
+  <section>
+    <div class="example-button-row">
+      <a mat-raised-button color="warn" routerLink="home">Home</a>
+      <a mat-raised-button routerLink="login" *ngIf="!isLoggedIn">Login</a>
+      <a mat-raised-button routerLink="dash" *ngIf="isLoggedIn">Dash Board</a>
+      <a mat-raised-button color="accent" routerLink="sign" *ngIf="!isLoggedIn"
+        >Sign Up</a
+      >
+      <!-- <a mat-raised-button color="accent" (click)="logout()">Log Out</a> -->
+      <a mat-raised-button color="accent" (click)="logout()" *ngIf="isLoggedIn"
+        >Log Out</a
+      >
+    </div>
+  </section>
+
+  <mat-divider></mat-divider>
+</mat-toolbar>

@@ -1,0 +1,52 @@
+<div *ngIf="isFromResult">
+  <div style="height: 5vh;">
+    <button mat-raised-button color="accent" (click)="backToResults()" >
+      Back to Results Page To Print the report
+    </button>
+  </div>
+</div>
+<div class="space">
+  <div class="background">
+    <div class="container">
+      <div class="screen">
+        <div class="screen-header">
+          <div class="screen-header-left">
+            <div class="screen-header-button close"></div>
+            <div class="screen-header-button maximize"></div>
+            <div class="screen-header-button minimize"></div>
+          </div>
+          <div class="screen-header-right">
+            <div class="screen-header-ellipsis"></div>
+            <div class="screen-header-ellipsis"></div>
+            <div class="screen-header-ellipsis"></div>
+          </div>
+        </div>
+        <div class="scroler">
+          <div class="screen-body">
+            <!-- <div class="background"> -->
+            <div class="chatbot-container">
+              <div class="chatbot-messages" *ngIf="messages.length > 0">
+                <div
+                  *ngFor="let message of messages.reverse()"
+                  class="message {{ message.type }}"
+                >
+                  <div class="content">{{ message.content }}</div>
+                </div>
+              </div>
+              <div class="chatbot-input">
+                <input
+                  type="text"
+                  [(ngModel)]="userInput"
+                  placeholder="Type your message"
+                  (keyup.enter)="sendMessage()"
+                />
+                <button (click)="sendMessage()">Send</button>
+              </div>
+            </div>
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+.mat-toolbar.mat-primary {
+  background: #196701;
+  color: #fff;
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+/* Responsive Styles */
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .example-flex-container {
+    flex-direction: column;
+  }
+
+  .example-button-row {
+    display: block;
+    max-width: none;
+  }
+
+  .example-button-row .mat-mdc-button-base {
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+
+  .example-button-container {
+    width: auto;
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Adjust styles for tablets if needed */
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  /* Adjust styles for desktop if needed */
+}

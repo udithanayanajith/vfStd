@@ -1,0 +1,21 @@
+<!-- 
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+    <mat-tab label="How to prevent ?"
+      ><app-prevent-dash></app-prevent-dash
+    ></mat-tab>
+    <mat-tab label="Future Data"><app-pred></app-pred></mat-tab>
+    <mat-tab label="Chat-Bot"><app-chat-bot></app-chat-bot></mat-tab>
+    <mat-tab label="About-Us"><app-index></app-index></mat-tab>
+  </mat-tab-group> -->
+
+<div *ngIf="isLoggedIn">
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+    <mat-tab label="How to prevent ?"
+      ><app-prevent-dash></app-prevent-dash
+    ></mat-tab>
+    <mat-tab label="Future Data"><app-pred></app-pred></mat-tab>
+    <mat-tab label="Chat-Bot"><app-chat-bot></app-chat-bot></mat-tab>
+    <mat-tab label="About-Us"><app-index></app-index></mat-tab>
+  </mat-tab-group>
+</div>
+<div *ngIf="!isLoggedIn"><app-login></app-login></div>

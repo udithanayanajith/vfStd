@@ -1,0 +1,218 @@
+<form class="my-form">
+  <h2>
+    We can give you a brief.......
+    <mat-icon class="icon-display">favorite</mat-icon>
+  </h2>
+
+  <div class="form-row">
+    <legend>
+      <span class="number">1</span> Would you like to upload a photo of your
+      fulid color?
+    </legend>
+
+    <div class="form-group">
+      <div class="radio-buttons horizontal">
+        <div
+          class="radio-buttons-row"
+          *ngFor="let radio of option; let i = index"
+        >
+          <input
+            type="radio"
+            [id]="radio.name"
+            name="photoGroup"
+            [value]="radio.value"
+            [(ngModel)]="selectedUpload"
+            (change)="selectedUploadChanged()"
+            required
+          />
+          <label [for]="radio.name">{{ radio.name }}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row" *ngIf="!isUpload">
+    <legend><span class="number">2</span> Select Your fluid color?</legend>
+    <label>If you do not have a color(Transparent) please select it</label>
+    <mat-checkbox class="example-margin" (click)="checkTransOfselect()"
+      >Transparent</mat-checkbox
+    >
+    <div class="form-group">
+      <div>
+        <table *ngIf="!transCheckSelect">
+          <tr>
+            <td (click)="updateValue('#AA1032')">
+              <img class="disese" src="/assets/images/diseses/g/g1.jpg" />
+            </td>
+            <td (click)="updateValue('#441620')">
+              <img class="disese" src="/assets/images/diseses/g/g1.jpg" />
+            </td>
+            <td (click)="updateValue('#940625')">
+              <img class="disese" src="/assets/images/diseses/g/g1.jpg" />
+            </td>
+            <td (click)="updateValue('#F0ACBB')">
+              <img class="disese" src="/assets/images/diseses/g/g1.jpg" />
+            </td>
+            <td (click)="updateValue('#5E0015')">
+              <img class="disese" src="/assets/images/diseses/g/g1.jpg" />
+            </td>
+          </tr>
+          <tr>
+            <td (click)="updateValue('#687C1B')">
+              <img class="disese" src="/assets/images/diseses/c/c1.jpg" />
+            </td>
+            <td (click)="updateValue('#5E673C')">
+              <img class="disese" src="/assets/images/diseses/c/c1.jpg" />
+            </td>
+            <td (click)="updateValue('#BBCD76')">
+              <img class="disese" src="/assets/images/diseses/c/c1.jpg" />
+            </td>
+            <td (click)="updateValue('#4D6102')">
+              <img class="disese" src="/assets/images/diseses/c/c1.jpg" />
+            </td>
+            <td (click)="updateValue('#83924B')">
+              <img class="disese" src="/assets/images/diseses/c/c1.jpg" />
+            </td>
+          </tr>
+          <tr>
+            <td (click)="updateValue('Transparent')">
+              <img class="disese" src="/assets/images/diseses/t/t1.jpg" />
+            </td>
+            <td (click)="updateValue('Transparent')">
+              <img class="disese" src="/assets/images/diseses/t/t1.jpg" />
+            </td>
+            <td (click)="updateValue('Transparent')">
+              <img class="disese" src="/assets/images/diseses/t/t1.jpg" />
+            </td>
+            <td (click)="updateValue('Transparent')">
+              <img class="disese" src="/assets/images/diseses/t/t1.jpg" />
+            </td>
+            <td (click)="updateValue('Transparent')">
+              <img class="disese" src="/assets/images/diseses/t/t1.jpg" />
+            </td>
+          </tr>
+        </table>
+        <div *ngIf="selectedValue">
+          <div class="selected-color">
+            Your selected color code is :{{ selectedValue }}
+          </div>
+          <legend style="color: red;">
+            Infection Probability is : {{selectedImageProbabilityResults}}
+          </legend>
+          <legend *ngIf="selectIsTrans">
+            According to your selected fluid color let's live web application
+            only can tell there you dont have an infection on your private area
+            or vagainal fluid. But we cannot direcly say there you are free from
+            STD, there can be a risk. So wee would like to invite you to
+            gothrough the Let's live AI tools to verify it
+          </legend>
+          <legend *ngIf="!selectIsTrans">
+            According to your selected fluid color let's live web application
+            only can tell there you have an infection on your private area,
+            furthermore this color is very similer to STD disese, I would like
+            to invite you to gothrough the Let's live AI tools to verify it
+          </legend>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row" *ngIf="isUpload">
+    <legend><span class="number">2</span> Upload Your fluid color?</legend>
+    <div class="form-group">
+      <table>
+        <tr>
+          <td>
+            <input
+              type="file"
+              (change)="onFileSelected($event)"
+              [disabled]="transCheck"
+            />
+            <div *ngIf="imageUrl">
+              <img
+                style="height: 250px; width: 100%;"
+                [src]="imageUrl"
+                alt="Uploaded Image"
+                (click)="captureColor($event)"
+                class="uploaded-image"
+              />
+            </div>
+
+            <div class="color-picker">
+              <label for="colorPicker">Select your color:</label>
+              <input
+                type="color"
+                id="colorPicker"
+                [(ngModel)]="selectedColor"
+                name="colorPicker"
+                [disabled]="transCheck"
+              />
+              <label for="colorPicker"
+                >Or if you do not have a color(Transparent) please select
+                it</label
+              >
+              <mat-checkbox class="example-margin" (click)="checkTrans()"
+                >Transparent</mat-checkbox
+              >
+            </div>
+            <div class="selected-color">
+              Your selected color code is :{{ selectedColor }}
+            </div>
+            <div
+              style="color: red;"
+              *ngIf="imageUrl &&  selectedColor ==='#000000' "
+            >
+              Please choose your vaginal fluid color
+            </div>
+            <button
+              *ngIf="imageUrl && selectedColor !=='#000000' || transCheck"
+              style="
+                color: white;
+                text-decoration: none;
+                margin-left: 2%;
+                padding: 5px 10px;
+                width: 15%;
+                border-radius: 3px;
+                font-family: 'Poiret One', cursive;
+                font-size: 2em;
+                background-color: #3498db;
+              "
+              (click)="predictDisese()"
+            >
+              Predict
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div *ngIf="uploadedImageProbabilityResults ">
+              <legend style="color: red;">
+                Infection Probability is : {{uploadedImageProbabilityResults}}
+              </legend>
+              <legend *ngIf="uploadIsTrans && transCheck">
+                According to your selected fluid color let's live web
+                application only can tell there you dont have an infection on
+                your private area or vagainal fluid. But we cannot direcly say
+                there you are free from STD, there can be a risk. So wee would
+                like to invite you to gothrough the Let's live AI tools to
+                verify it
+              </legend>
+              <legend *ngIf="!uploadIsTrans && !transCheck">
+                According to your selected fluid color let's live web
+                application only can tell there you have an infection on your
+                private area, furthermore this color is very similer to STD
+                disese, I would like to invite you to gothrough the Let's live
+                AI tools to verify it
+              </legend>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <button type="submit" (click)="gotoPred()" class="submit-button">
+      Verify
+    </button>
+  </div>
+</form>

@@ -1,0 +1,122 @@
+<div class="space" id="">
+  <div class="background">
+    <div class="containerBody">
+      <div class="screen">
+        <div class="screen-header">
+          <div class="screen-header-left">
+            <div class="screen-header-button close"></div>
+            <div class="screen-header-button maximize"></div>
+            <div class="screen-header-button minimize"></div>
+          </div>
+          <div class="screen-header-right">
+            <div class="screen-header-ellipsis"></div>
+            <div class="screen-header-ellipsis"></div>
+            <div class="screen-header-ellipsis"></div>
+          </div>
+        </div>
+        <div class="scroler">
+          <div class="screen-body">
+            <div class="container">
+              <div class="container_content">
+                <div class="container_content_inner">
+                  <div class="btns">
+                    <button class="btns_more" (click)="exportAsPDF()">
+                      Print Or export report as PDF
+                    </button>
+                  </div>
+                  <div class="title">
+                    <h1>
+                      Hi {{ predictions.userData.name }}&nbsp;!&nbsp;&nbsp; you
+                      have : {{nameOfDiagnosisOfUser}}
+                    </h1>
+                  </div>
+                  <div class="par">
+                    <form action="">
+                      <!--  General -->
+                      <div class="form-group">
+                        <h2 class="heading">Medical Results & Summery</h2>
+
+                        <div class="controls">
+                          <label class="userData">Name</label>
+                          <input
+                            type="text"
+                            id="name"
+                            class="floatLabel"
+                            name="name"
+                            [(ngModel)]="nameOfUser"
+                            readonly
+                          />
+                        </div>
+                        <div class="controls">
+                          <label class="userData">Age</label>
+                          <input
+                            type="text"
+                            id="age"
+                            class="floatLabel"
+                            name="age"
+                            [(ngModel)]="ageOfUser"
+                          />
+                        </div>
+                        <div class="controls">
+                          <label class="userData">Gender</label>
+                          <input
+                            type="text"
+                            id="sex"
+                            class="floatLabel"
+                            name="sex"
+                            [(ngModel)]="sexOfUser"
+                          />
+                        </div>
+                        <div class="controls">
+                          <label class="userData">Diagnosis</label>
+                          <input
+                            type="tel"
+                            id="diagnosis"
+                            class="floatLabel"
+                            name="diagnosis"
+                            [(ngModel)]="diagnosisOfUser"
+                          />
+                        </div>
+                      </div>
+                      <!--  Details -->
+                      <div class="form-group">
+                        <h2 class="heading">Symptoms</h2>
+                        <div class="grid">
+                          <div class="controls">
+                            <div class="sytompsList">
+                              <ul>
+                                <li
+                                  *ngFor="let symptom of predictions.userData.symptomsList | keyvalue"
+                                >
+                                  {{ symptom.value }}
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button
+                        type="submit"
+                        value="Submit"
+                        (click)="goToChatBot()"
+                        class="col-1-4"
+                      >
+                        &nbsp; Go to STD Bot
+                      </button>
+                    </form>
+                  </div>
+                  <div class="btns">
+                    <button class="btns_more" (click)="exportAsPDF()">
+                      Print Or export report as PDF
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="overlay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
